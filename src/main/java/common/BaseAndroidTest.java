@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
  */
 public class BaseAndroidTest extends AppiumDriverBuilder {
     private final String platform = "ANDROID";
-    private final String appName = "";
+    private final String appName = "Bukalapak";
 
     @BeforeMethod
     @Parameters({ "URL_"})
