@@ -1,6 +1,8 @@
 package platform.android.bukalapak;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import platform.android.AndroidPageFactory;
 
 /**
@@ -11,4 +13,11 @@ public class AbstractPage extends AndroidPageFactory {
         super(appiumDriver);
     }
 
+    @AndroidFindBy(id = "button_showcase")
+    public MobileElement okButtonHomeScreen;
+
+    public void clickOkButtonHomeScreen(){
+        assertTrue(okButtonHomeScreen.isDisplayed(), "Failed : Ok Button Not Displayed");
+        okButtonHomeScreen.click();
+    }
 }

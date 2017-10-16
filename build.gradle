@@ -8,14 +8,17 @@ task wrapper(type: Wrapper) {
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+configurations {
+    agent
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.7'
     compile group: 'io.appium', name: 'java-client', version: '4.1.2'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.53.0'
@@ -24,7 +27,14 @@ dependencies {
     testCompile group: 'commons-lang', name: 'commons-lang', version: '2.6'
     compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.21'
     compile group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.21'
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
     compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
-    compile group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.4.22'
-    compile group: 'org.testng', name: 'testng', version: '6.9.10'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
+    compile group: 'junit', name: 'junit', version: '4.12'
+//    compile group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.4.22'
 }
+
+//test.doFirst {
+//    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+//}

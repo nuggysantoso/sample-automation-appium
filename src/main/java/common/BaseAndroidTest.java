@@ -1,20 +1,28 @@
 package common;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
+import org.junit.Before;
+import platform.android.bukalapak.AbstractPage;
+import platform.android.bukalapak.HomePage;
 
 /**
  * Created by nugroho_s on 10/5/17.
  */
 public class BaseAndroidTest extends AppiumDriverBuilder {
-    private final String platform = "ANDROID";
-    private final String appName = "Bukalapak";
+    private final String platform = "Android";
 
-    @BeforeMethod
-    @Parameters({ "URL_"})
-    public void setUp(String URL_) throws Exception {
+    /**
+     * List of page
+     * Please make sure the class from android package
+     */
+    protected HomePage homePage;
+    protected AbstractPage abstractPage;
+
+
+    @Before
+    public void setUp() throws Exception {
         super.setPlatform(platform);
-        super.setApp(appName);
-        super.setDriver(URL_);
+        super.setDriver();
+        homePage = new HomePage(getDriver());
+        abstractPage = new AbstractPage(getDriver());
     }
 }
